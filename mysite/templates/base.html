@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block sidebar %}
+<div>sitemap:</div> 
+{% for dashboard in menu %}
+    <div>{{ dashboard.name }}</div>
+    <ul>
+    {% for panel in dashboard.panels %}
+        <li>{{ panel.name }}</li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock %}
+
+{% block content %} <img src="{% static "site.png" %}" /> {% endblock %}
