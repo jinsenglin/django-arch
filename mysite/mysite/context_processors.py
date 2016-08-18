@@ -23,5 +23,13 @@ def sitemap(request):
     for dashboard in dashboard_dict:
         dashboard_list.append(dashboard_dict[dashboard])
 
+    # sort panels
+    for dashboard in dashboard_list:
+        dashboard['panels'] = sorted(dashboard['panels'],
+                                     key=lambda k: k['order'])
+
+    # sort dashboards
+    dashboard_list = sorted(dashboard_list, key=lambda k: k['order'])
+
     sitemap = {'sitemap': dashboard_list}
     return sitemap
