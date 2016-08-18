@@ -2,30 +2,26 @@ from django.apps import apps
 
 
 def sitemap(request):
-    dashboards = []
+    dashboard_list = []
+
+    # triage apps
+    dashboard_dict = {}
+    panel_list = []
     for config in apps.get_app_configs():
         if hasattr(config, 'menu'):
             if 'panel' in config.menu:
-                # a panel app
-                if any(d['name'] == config.menu['dashboard']
-                       for d in dashboards):
-
-                    # parent dashboard already exists TODO
-                    pass
-                else:
-                    dashboards.append({'name': config.menu['dashboard'],
-                                       'panels': [{'name': config.name}],
-                                       'path': ''})
+                panel_list.append(config.menu)
             else:
-                # a dashboard app
-                if any(d['name'] == config.menu['dashboard']
-                       for d in dashboards):
+                config.menu['panels'] = []
+                dashboard_dict[config.menu['dashboard']] = config.menu
 
-                    # dashboard already exists
-                    pass
-                else:
-                    dashboards.append({'name': config.name, 'panels': [],
-                                       'path': ''})
+    # triage panels
+    for panel in panel_list:
+        dashboard_dict[panel['dashboard']]['panels'].append(panel)
 
-    sitemap = {'sitemap': dashboards}
+    # convert dashboards from dict to list
+    for dashboard in dashboard_dict:
+        dashboard_list.append(dashboard_dict[dashboard])
+
+    sitemap = {'sitemap': dashboard_list}
     return sitemap
