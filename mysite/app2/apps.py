@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
+from mysite import constants
+
 
 class App2Config(AppConfig):
     name = 'app2'
@@ -11,10 +13,13 @@ class App2Config(AppConfig):
     # add a new class attribute
     menu = {'dashboard': name,
             'name': verbose_name,
-            'order': '2',
-            'scope': 'anonymous'}
+            'order': 20,
+            'scope': [constants.ROLE_SUPER_ADMIN,
+                      constants.ROLE_SYSTEM_ADMIN,
+                      constants.ROLE_PROJECT_ADMIN,
+                      constants.ROLE_PROJECT_USER]}
 
     # override ready method
     def ready(self):
         super(App2Config, self).ready()
-        # TODO update class variable 'menu' to add permission information
+        # update class variable 'menu' here if according to other model
