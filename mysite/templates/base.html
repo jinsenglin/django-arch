@@ -4,10 +4,20 @@
 <div>TODO cached sitemap by both lang and role</div> 
 <div>sitemap:</div> 
 {% for dashboard in sitemap %}
-    <div>{{ dashboard.name }}</div>
+    <div>
+	{% if dashboard.path == '' %}
+	{{ dashboard.name }}
+	{% else %}
+	<a href="{{dashboard.path}}">{{ dashboard.name }}</a>
+	{% endif %}
+    </div>
     <ul>
     {% for panel in dashboard.panels %}
+	{% if panel.path == '' %}
         <li>{{ panel.name }}</li>
+	{% else %}
+	<li><a href="{{panel.path}}">{{ panel.name }}</a></li>
+	{% endif %}
     {% endfor %}
     </ul>
 {% endfor %}

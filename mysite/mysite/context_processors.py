@@ -14,7 +14,8 @@ def sitemap(request):
                     pass
                 else:
                     dashboards.append({'name': config.menu['dashboard'],
-                                       'panels': [{'name': config.name}]})
+                                       'panels': [{'name': config.name}],
+                                       'path': ''})
             else:
                 # a dashboard app
                 if any(d['name'] == config.menu['dashboard']
@@ -23,7 +24,8 @@ def sitemap(request):
                     # dashboard already exists
                     pass
                 else:
-                    dashboards.append({'name': config.name, 'panels': []})
+                    dashboards.append({'name': config.name, 'panels': [],
+                                       'path': ''})
 
     sitemap = {'sitemap': dashboards}
     return sitemap
