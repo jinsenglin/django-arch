@@ -5,4 +5,15 @@ from django.apps import AppConfig
 
 class App22Config(AppConfig):
     name = 'app2_2'
-    menu = {'dashboard': 'app2', 'panel': 'app2_2', 'order': '1'}
+    verbose_name = 'App 2_2'  # TODO replace with ugettext_lazy()
+
+    # add a new class attribute
+    menu = {'dashboard': 'app2',
+            'panel': name,
+            'name': verbose_name,
+            'order': '1'}
+
+    # override ready method
+    def ready(self):
+        super(App22Config, self).ready()
+        # TODO update class variable 'menu' to add permission information
