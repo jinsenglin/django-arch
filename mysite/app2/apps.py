@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
 from django.apps import AppConfig
+from django.utils.translation import ugettext_lazy as _
 
 
 class App2Config(AppConfig):
     name = 'app2'
-    verbose_name = 'App 2'  # TODO replace with ugettext_lazy()
+    verbose_name = _('App 2')
 
     # add a new class attribute
     menu = {'dashboard': name,

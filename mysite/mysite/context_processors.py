@@ -2,6 +2,9 @@ from django.apps import apps
 
 
 def sitemap(request):
+    # debug
+    print request.LANGUAGE_CODE
+
     dashboard_list = []
 
     # triage apps
