@@ -1,12 +1,16 @@
 from django.apps import apps
 
+from mysite import constants
+
 
 def sitemap(request):
-    def hasperm(app):
+    def hasperm(scope):
         """Filter app according to scope"""
 
-        # TODO
-        return True
+        # TODO : replace with request.some.attr
+        myrole = constants.ROLE_AUDIT_USER
+
+        return any(role == myrole for role in scope)
 
     # debug
     print request.LANGUAGE_CODE
