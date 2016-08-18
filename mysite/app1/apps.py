@@ -10,7 +10,8 @@ class App1Config(AppConfig):
     # add a new class attribute
     menu = {'dashboard': name,
             'name': verbose_name,
-            'order': '1'}
+            'order': '1',
+            'path': name}
 
     # override ready method
     def ready(self):

@@ -11,7 +11,8 @@ class App21Config(AppConfig):
     menu = {'dashboard': 'app2',
             'panel': name,
             'name': verbose_name,
-            'order': '2'}
+            'order': '2',
+            'path': name}
 
     # override ready method
     def ready(self):
