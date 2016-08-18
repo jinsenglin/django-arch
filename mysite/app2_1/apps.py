@@ -13,7 +13,8 @@ class App21Config(AppConfig):
             'panel': name,
             'name': verbose_name,
             'order': '2',
-            'path': name}
+            'path': name,
+            'scope': 'anonymous'}
 
     # override ready method
     def ready(self):

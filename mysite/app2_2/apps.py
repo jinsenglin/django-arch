@@ -13,7 +13,8 @@ class App22Config(AppConfig):
             'panel': name,
             'name': verbose_name,
             'order': '1',
-            'path': name}
+            'path': name,
+            'scope': 'authenticated'}
 
     # override ready method
     def ready(self):

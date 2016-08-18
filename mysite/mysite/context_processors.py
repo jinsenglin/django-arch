@@ -4,10 +4,11 @@ from django.apps import apps
 def sitemap(request):
     # debug
     print request.LANGUAGE_CODE
+    print request.user.is_authenticated
 
     dashboard_list = []
 
-    # triage apps
+    # triage apps TODO : to filter apps according to scope
     dashboard_dict = {}
     panel_list = []
     for config in apps.get_app_configs():

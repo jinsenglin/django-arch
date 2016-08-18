@@ -12,7 +12,8 @@ class App1Config(AppConfig):
     menu = {'dashboard': name,
             'name': verbose_name,
             'order': '1',
-            'path': name}
+            'path': name,
+            'scope': 'anonymous'}
 
     # override ready method
     def ready(self):

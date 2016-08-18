@@ -11,7 +11,8 @@ class App2Config(AppConfig):
     # add a new class attribute
     menu = {'dashboard': name,
             'name': verbose_name,
-            'order': '2'}
+            'order': '2',
+            'scope': 'anonymous'}
 
     # override ready method
     def ready(self):
