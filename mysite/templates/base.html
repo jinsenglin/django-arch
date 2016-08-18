@@ -5,18 +5,18 @@
 <div>sitemap:</div> 
 {% for dashboard in sitemap %}
     <div>
-	{% if path in dashboard.path == '' %}
-	{{ dashboard.name }}
-	{% else %}
+	{% if dashboard.path %}
 	<a href="/{{dashboard.path}}">{{ dashboard.name }}</a>
+	{% else %}
+	{{ dashboard.name }}
 	{% endif %}
     </div>
     <ul>
     {% for panel in dashboard.panels %}
-	{% if panel.path == '' %}
-        <li>{{ panel.name }}</li>
-	{% else %}
+	{% if panel.path %}
 	<li><a href="/{{panel.path}}">{{ panel.name }}</a></li>
+	{% else %}
+        <li>{{ panel.name }}</li>
 	{% endif %}
     {% endfor %}
     </ul>
