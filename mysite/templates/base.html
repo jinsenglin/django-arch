@@ -1,8 +1,9 @@
 {% load static %}
 
 {% block sidebar %}
+<div>TODO cached sitemap by both lang and role</div> 
 <div>sitemap:</div> 
-{% for dashboard in menu %}
+{% for dashboard in sitemap %}
     <div>{{ dashboard.name }}</div>
     <ul>
     {% for panel in dashboard.panels %}
