@@ -1,7 +1,12 @@
+import logging
+
 from django.apps import apps
 from django.core.cache import cache
 
 from mysite import constants
+
+
+logger = logging.getLogger(__name__)
 
 
 def sitemap(request):
@@ -11,8 +16,8 @@ def sitemap(request):
     mylang = request.LANGUAGE_CODE
 
     # print debug information
-    print myrole
-    print mylang
+    logger.debug(' '.join(['myrole =', myrole]))
+    logger.debug(' '.join(['mylang =', mylang]))
 
     def mkcachekey(myrole, mylang):
         """Return cache key according to role and language code"""
@@ -62,8 +67,13 @@ def sitemap(request):
     # return sitemap from cache if exists, otherwise make one and cache it
     cachekey = mkcachekey(myrole, mylang)
     sitemap = cache.get(cachekey)
+
     if sitemap:
+        # print debug information
+        logger.debug('use the cached sitemap')
+
         return sitemap
+
     else:
         sitemap = mksitemap(myrole)
         cache.set(cachekey, sitemap)
