@@ -135,8 +135,8 @@ LOGGING = {
         }
     },
     'formatters': {
-        'jimlin': {
-            'format': '%(levelname)s|%(asctime)s|%(filename)s|%(lineno)d|%(message)s'
+        'debug': {
+            'format': '%(levelname)s|%(pathname)s|%(lineno)d|%(message)s'
         },
         'verbose': {
             'format': '%(levelname)s|%(asctime)s|%(module)s|%(process)d|%(thread)d|%(message)s'
@@ -149,13 +149,29 @@ LOGGING = {
         'console': {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'jimlin',
+            'formatter': 'debug',
         }
     },
     'loggers': {
         'mysite': {
             'handlers': ['console'],
             'level': 'DEBUG',
-        }
+        },
+        'app1': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'app2': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'app2_1': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'app2_2': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
     }
 }

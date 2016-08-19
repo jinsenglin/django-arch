@@ -1,9 +1,13 @@
 from __future__ import unicode_literals
+import logging
 
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 from mysite import constants
+
+
+logger = logging.getLogger(__name__)
 
 
 class App1Config(AppConfig):
@@ -20,6 +24,12 @@ class App1Config(AppConfig):
                       constants.ROLE_PROJECT_ADMIN,
                       constants.ROLE_PROJECT_USER,
                       constants.ROLE_AUDIT_USER]}
+
+    # print debug information
+    logger.debug(' '.join(['dashboard =', menu['dashboard']]))
+    logger.debug(' '.join(['order =', str(menu['order'])]))
+    logger.debug(' '.join(['scope =', ','.join(menu['scope'])]))
+    logger.debug(' '.join(['path =', menu['path']]))
 
     # override ready method
     def ready(self):
