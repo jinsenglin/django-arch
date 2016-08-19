@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def sitemap(request):
     """Return sitemap"""
 
-    myrole = constants.ROLE_AUDIT_USER  # TODO : replace with request..some.attr
+    myrole = constants.ROLE_SYSTEM_ADMIN # TODO : replace with request.some.attr
     mylang = request.LANGUAGE_CODE
 
     # print debug information

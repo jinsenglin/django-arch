@@ -1,26 +1,37 @@
 {% load static %}
 
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% load mysite %}
+{% get_current_role as USER_ROLE %}
+
+{% load cache %}
+
 {% block sidebar %}
-<div>TODO cached sitemap by both lang and role</div> 
-<div>sitemap:</div> 
-{% for dashboard in sitemap %}
-    <div>
-	{% if dashboard.path %}
-	<a href="/{{dashboard.path}}">{{ dashboard.name }}</a>
-	{% else %}
-	{{ dashboard.name }}
-	{% endif %}
-    </div>
-    <ul>
-    {% for panel in dashboard.panels %}
-	{% if panel.path %}
-	<li><a href="/{{panel.path}}">{{ panel.name }}</a></li>
-	{% else %}
-        <li>{{ panel.name }}</li>
-	{% endif %}
+
+    {% cache 0 sitemap LANGUAGE_CODE USER_ROLE %}
+    <div>sitemap:</div> 
+    {% for dashboard in sitemap %}
+        <div>
+     	    {% if dashboard.path %}
+	    <a href="/{{dashboard.path}}">{{ dashboard.name }}</a>
+	    {% else %}
+	    {{ dashboard.name }}
+	    {% endif %}
+        </div>
+        <ul>
+        {% for panel in dashboard.panels %}
+	    {% if panel.path %}
+	    <li><a href="/{{panel.path}}">{{ panel.name }}</a></li>
+	    {% else %}
+            <li>{{ panel.name }}</li>
+	    {% endif %}
+        {% endfor %}
+        </ul>
     {% endfor %}
-    </ul>
-{% endfor %}
+    {% endcache %}
+
 {% endblock %}
 
 {% block content %} <img src="{% static "site.png" %}" /> {% endblock %}
