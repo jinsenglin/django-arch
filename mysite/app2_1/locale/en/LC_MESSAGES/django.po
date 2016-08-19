@@ -19,4 +19,4 @@ msgstr ""
 
 #: app2_1/apps.py:9
 msgid "App 2_1"
-msgstr ""
+msgstr "Application 2_1"

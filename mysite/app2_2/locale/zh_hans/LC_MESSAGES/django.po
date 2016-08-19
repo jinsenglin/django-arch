@@ -19,4 +19,4 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 #: app2_2/apps.py:9
 msgid "App 2_2"
-msgstr ""
+msgstr "应用程式 二之二"
