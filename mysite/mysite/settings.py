@@ -135,6 +135,9 @@ LOGGING = {
         }
     },
     'formatters': {
+        'jimlin': {
+            'format': '%(levelname)s|%(asctime)s|%(filename)s|%(lineno)d|%(message)s'
+        },
         'verbose': {
             'format': '%(levelname)s|%(asctime)s|%(module)s|%(process)d|%(thread)d|%(message)s'
         },
@@ -146,7 +149,7 @@ LOGGING = {
         'console': {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
+            'formatter': 'jimlin',
         }
     },
     'loggers': {
