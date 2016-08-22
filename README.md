@@ -11,4 +11,4 @@ pip install -r requirements.txt
 cd mysite && python manage.py runsever
 
 # Run Test (Prerequisite : Setup Development Environment)
-cd mysite && pytest
+cd mysite && pytest -v
