@@ -9,6 +9,10 @@ def test_sitemap():
     request = factory.get('/')
     request.LANGUAGE_CODE = 'en'
 
+    # test the first hit
     sitemap = context_processors.sitemap(request)
+    assert 'sitemap' in sitemap
 
+    # test the cached
+    sitemap = context_processors.sitemap(request)
     assert 'sitemap' in sitemap
