@@ -3,16 +3,21 @@ import logging
 from django.apps import apps
 from django.core.cache import cache
 
-from mysite import constants
+from mysite.libs import common
 
 
 logger = logging.getLogger(__name__)
 
 
 def sitemap(request):
-    """Return sitemap"""
+    """Return sitemap
 
-    myrole = constants.ROLE_SYSTEM_ADMIN # TODO : replace with request.some.attr
+    # fake implementation
+    from mysite import constants
+    myrole = constants.ROLE_SYSTEM_ADMIN
+    """
+
+    myrole = common.get_role(request)
     mylang = request.LANGUAGE_CODE
 
     # print debug information
