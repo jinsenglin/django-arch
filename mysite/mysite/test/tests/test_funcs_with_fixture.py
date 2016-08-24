@@ -16,7 +16,7 @@ class MySiteTest(StaticLiveServerTestCase):
         self.browser.quit()
 
     def test_login(self):
-        self.browser.get(self.live_server_url + '/admin/')
+        self.browser.get(self.live_server_url + '/admin/login/')
 
         self.browser.find_element_by_id('id_username').send_keys("cclin")
         self.browser.find_element_by_id("id_password").send_keys('p@ssw0rd')
