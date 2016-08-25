@@ -21,9 +21,5 @@ from mysite import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^app1/', include('app1.urls')),
-    url(r'^app2/', include('app2.urls')),
-    url(r'^app2_1/', include('app2_1.urls')),
-    url(r'^app2_2/', include('app2_2.urls')),
     url(r'^admin/', admin.site.urls),
 ]

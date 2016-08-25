@@ -33,5 +33,12 @@ class App21Config(AppConfig):
 
     # override ready method
     def ready(self):
+        """Update class variable 'menu' here if according to other model
+        """
+
         super(App21Config, self).ready()
-        # update class variable 'menu' here if according to other model
+
+        # register urlconf
+        from django.conf.urls import include, url
+        from mysite import urls
+        urls.urlpatterns.append(url(r'^app2_1/', include('app2_1.urls')))
