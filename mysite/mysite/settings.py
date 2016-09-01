@@ -151,6 +151,15 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'debug',
+        },
+        'logstash': {
+            'class': 'logstash.LogstashHandler',
+            'host': '192.168.121.1',
+            'port': 5959,
+            'version': 1,
+            'message_type': 'logstash',
+            'fqdn': False,
+            'tags': None,
         }
     },
     'loggers': {
